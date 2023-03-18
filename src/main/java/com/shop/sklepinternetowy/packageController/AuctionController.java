@@ -15,21 +15,23 @@ import org.springframework.web.servlet.ModelAndView;
 public class AuctionController {
 
     private AuctionService auctionService;
+    public AuctionController(AuctionService auctionService)
+    {this.auctionService=auctionService;}
     @RequestMapping(path = "/add-auction", method = RequestMethod.GET)
     public ModelAndView getPlanetForm(){
-        return new ModelAndView("new-auction-form.html"); }
+        return new ModelAndView("new-auction-form"); }
     @PostMapping("/add-auction")
     public String createPlanet(@RequestParam String name,
                                @RequestParam(name = "auction_type") String auctionType,
-                               @RequestParam int size,
+                               @RequestParam int time,
                                Model model) {
         try {
-            auctionService.createAuction(new AuctionCreationRequest(name, auctionType, size));
+            auctionService.createAuction(new AuctionCreationRequest(name, auctionType, time));
             model.addAttribute("message", "Dodano aukcję o nazwie: " + name);
         } catch (AuctionServiceException e) {
             model.addAttribute("message", e.getMessage());
         }
-        return "auction-page";
+        return "auction-house-page";
 
     }
 }
