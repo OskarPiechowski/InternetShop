@@ -10,6 +10,6 @@ public class MainController {
 
     @RequestMapping(path = "/auctionHouse",method = RequestMethod.GET)
     public ModelAndView getImperatorPage(){
-        return new ModelAndView("shop-page");
+        return new ModelAndView("auction-house-page");
     }
 }
