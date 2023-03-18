@@ -1,3 +1,1 @@
-console.log('hello');
-/*
-alert('hello imperator');*/
+console.log('hello in auction house');
