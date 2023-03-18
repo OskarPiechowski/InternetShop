@@ -7,5 +7,20 @@
 <body>
 <h1> Dodaj nową aukcję</h1>
 <h2><a href="/shop">Powrót na stronę główną sklepu</a></h2>
+<form action="/add-auction" method="post">
+    <label>Nazwa aukcji:</label>
+    <input type="text" name="name">
+    <br>
+    <label>Rodzaj aukcji:</label>
+    <label>kupTeraz</label>
+    <input type="radio" name="auction_type" value="kupTeraz">
+    <label>licytacja</label>
+    <input type="radio" name="auction_type" value="licytacja">
+    <br>
+    <label>Długość: </label>
+    <input type="number" name="time">
+    <br>
+    <button type="submit">Dodaj aukcję</button>
+</form>
 </body>
 </html>

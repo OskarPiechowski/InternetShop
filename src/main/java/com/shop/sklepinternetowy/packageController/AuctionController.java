@@ -18,18 +18,18 @@ public class AuctionController {
     @RequestMapping(path = "/add-auction", method = RequestMethod.GET)
     public ModelAndView getPlanetForm(){
         return new ModelAndView("new-auction-form.html"); }
-    @PostMapping("/add-planet")
+    @PostMapping("/add-auction")
     public String createPlanet(@RequestParam String name,
-                               @RequestParam(name = "planet_type") String planetType,
+                               @RequestParam(name = "auction_type") String auctionType,
                                @RequestParam int size,
                                Model model) {
         try {
-            auctionService.createAuction(new AuctionCreationRequest(name, planetType, size));
-            model.addAttribute("message", "Dodano plantę o nazwie: " + name);
+            auctionService.createAuction(new AuctionCreationRequest(name, auctionType, size));
+            model.addAttribute("message", "Dodano aukcję o nazwie: " + name);
         } catch (AuctionServiceException e) {
             model.addAttribute("message", e.getMessage());
         }
-        return "imperator-page";
+        return "auction-page";
 
     }
 }
