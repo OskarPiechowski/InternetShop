@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class PlanetController {
+public class AuctionController {
 
-    @RequestMapping(path = "/add-planet", method = RequestMethod.GET)
+    @RequestMapping(path = "/add-auction", method = RequestMethod.GET)
     public ModelAndView getPlanetForm(){
-        return new ModelAndView("planet-form.html");
+        return new ModelAndView("new-auction-form.html");
 
     }
 }
