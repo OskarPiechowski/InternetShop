@@ -8,9 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
-    @RequestMapping(path = "/shop",method = RequestMethod.GET)
+    @RequestMapping(path = "/auctionHouse",method = RequestMethod.GET)
     public ModelAndView getImperatorPage(){
-        ModelAndView modelAndView = new ModelAndView("shop-page.html");
-        return modelAndView;
+        return new ModelAndView("shop-page");
     }
 }
