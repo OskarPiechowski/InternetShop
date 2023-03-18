@@ -4,9 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class PortController {
-    @GetMapping(path = "add-port")
-    public String getPortForm(){
-        return "port-form";
+public class AuctionRemovalController {
+    @GetMapping(path = "remove-auction")
+    public String getRemoveForm(){
+        return "remove-auction-form";
     }
 }
