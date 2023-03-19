@@ -2,7 +2,7 @@ package com.shop.sklepinternetowy.request;
 
 public class RegisterRequest {
 
-    private String ClientName;
+    private String UserName;
 
     private String password1;
 
@@ -11,12 +11,12 @@ public class RegisterRequest {
     public RegisterRequest() {
     }
 
-    public String getClientName() {
-        return ClientName;
+    public String getUserName() {
+        return UserName;
     }
 
-    public void setClientName(String clientName) {
-        ClientName = clientName;
+    public void setUserName(String userName) {
+        UserName = userName;
     }
 
     public String getPassword1() {
@@ -38,7 +38,7 @@ public class RegisterRequest {
     @Override
     public String toString() {
         return "RegisterRequest{" +
-                "ClientName='" + ClientName + '\'' +
+                "ClientName='" + UserName + '\'' +
                 ", password1='" + password1 + '\'' +
                 ", password2='" + password2 + '\'' +
                 '}';

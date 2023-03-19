@@ -1,12 +1,15 @@
 package com.shop.sklepinternetowy.service;
 
+import com.shop.sklepinternetowy.entity.User;
+import com.shop.sklepinternetowy.exception.AuthenticationServiceException;
+import com.shop.sklepinternetowy.repository.AuctionRepository;
 import com.shop.sklepinternetowy.request.RegisterRequest;
 import jakarta.transaction.Transactional;
 
 public class AuthenticationService {
-    private ImperatorRepository imperatorRepository;
+    private AuctionRepository imperatorRepository;
 
-    public AuthenticationService(ImperatorRepository imperatorRepository) {
+    public AuthenticationService(AuctionRepository imperatorRepository) {
         this.imperatorRepository = imperatorRepository;
     }
 
@@ -18,12 +21,12 @@ public class AuthenticationService {
         if (!request.getPassword1().equals(request.getPassword2())) {
             throw new AuthenticationServiceException("Podano różne hasła");
         }
-        if(imperatorRepository.existsById(request.getImperatorName())){
+        if(imperatorRepository.existsById(request.getUserName())){
             throw new AuthenticationServiceException("Ta nazwa jest już zajęta!");
         }
 
-        Imperator imperator = new Imperator(request.getImperatorName(), request.getPassword1());
-        imperatorRepository.save(imperator);
+        User user = new User(request.getUserName(), request.getPassword1());
+        imperatorRepository.save(user);
     }
 
 }
