@@ -5,7 +5,9 @@ import com.shop.sklepinternetowy.exception.AuthenticationServiceException;
 import com.shop.sklepinternetowy.repository.AuctionRepository;
 import com.shop.sklepinternetowy.request.RegisterRequest;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthenticationService {
     private AuctionRepository auctionRepository;
 
