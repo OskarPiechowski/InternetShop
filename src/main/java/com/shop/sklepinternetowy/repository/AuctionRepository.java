@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface AuctionRepository extends JpaRepository<Auction,Long> { // JpaRepository - zawiera CrudRepository
     List<Auction> findByType(AuctionType type);
+
 }
 
 

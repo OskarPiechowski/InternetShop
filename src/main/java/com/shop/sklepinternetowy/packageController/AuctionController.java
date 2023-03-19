@@ -44,8 +44,11 @@ public class AuctionController {
         return "browse-auction-form";
     }
     @PostMapping("/browse-auction-form")
-    public String filteredFindPlanetPage(
-            @ModelAttribute("request") AuctionFilterRequest request) {
+    public String filteredFindAuctionPage(
+            @ModelAttribute("request") AuctionFilterRequest request,
+            Model model) {
+        List<AuctionResponse> auctions = auctionService.getAuctions(request);
+        model.addAttribute("auctions", auctions);
         System.out.println(request);
         return "browse-auction-form";
     }
