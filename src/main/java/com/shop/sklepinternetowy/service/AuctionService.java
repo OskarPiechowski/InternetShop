@@ -5,6 +5,7 @@ import com.shop.sklepinternetowy.entity.AuctionType;
 import com.shop.sklepinternetowy.exception.AuctionServiceException;
 import com.shop.sklepinternetowy.repository.AuctionRepository;
 import com.shop.sklepinternetowy.request.AuctionCreationRequest;
+import com.shop.sklepinternetowy.request.AuctionFilterRequest;
 import com.shop.sklepinternetowy.response.AuctionResponse;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,12 @@ public class AuctionService {
     }
     public List<AuctionResponse> getAllAuctions(){
         return repository.findAll().stream()
+                .map(p -> new AuctionResponse(p.getName(), p.getType(), p.getTime()))
+                .toList();
+    }
+    public List<AuctionResponse> getAuctions(AuctionFilterRequest filterRequest) {
+        AuctionType type = AuctionType.valueOf(filterRequest.getAuctionType());
+        return repository.findByType(type).stream()
                 .map(p -> new AuctionResponse(p.getName(), p.getType(), p.getTime()))
                 .toList();
     }
