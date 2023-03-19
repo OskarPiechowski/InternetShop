@@ -1,7 +1,14 @@
 package com.shop.sklepinternetowy.repository;
 
-import com.shop.sklepinternetowy.entity.User;
-import org.springframework.data.repository.CrudRepository;
+import com.shop.sklepinternetowy.entity.Auction;
+import com.shop.sklepinternetowy.entity.AuctionType;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AuctionRepository extends CrudRepository<User,String> {
+import java.util.List;
+
+public interface AuctionRepository extends JpaRepository<Auction,Long> { // JpaRepository - zawiera CrudRepository
+    List<Auction> findByType(AuctionType type);
+
 }
+
+

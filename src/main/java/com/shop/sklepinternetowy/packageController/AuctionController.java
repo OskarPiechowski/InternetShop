@@ -2,14 +2,15 @@ package com.shop.sklepinternetowy.packageController;
 
 import com.shop.sklepinternetowy.exception.AuctionServiceException;
 import com.shop.sklepinternetowy.request.AuctionCreationRequest;
+import com.shop.sklepinternetowy.request.AuctionFilterRequest;
+import com.shop.sklepinternetowy.response.AuctionResponse;
 import com.shop.sklepinternetowy.service.AuctionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class AuctionController {
@@ -34,5 +35,24 @@ public class AuctionController {
         return "auction-house-page";
 
     }
+    @GetMapping("/browse-auction-form")
+    public String getFindAuctionPage(Model model) {
+        //czy na pewno encja w kontrolerze? architektura warstw!!
+        model.addAttribute("request", new AuctionFilterRequest());
+        List<AuctionResponse> auctions =  auctionService.getAllAuctions();
+        model.addAttribute("auctions", auctions);
+        return "browse-auction-form";
+    }
+    @PostMapping("/browse-auction-form")
+    public String filteredFindAuctionPage(
+            @ModelAttribute("request") AuctionFilterRequest request,
+            Model model) {
+        List<AuctionResponse> auctions = auctionService.getAuctions(request);
+        model.addAttribute("auctions", auctions);
+        System.out.println(request);
+        return "browse-auction-form";
+    }
 }
+
+
 
