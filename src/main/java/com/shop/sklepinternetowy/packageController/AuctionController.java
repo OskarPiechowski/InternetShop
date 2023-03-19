@@ -2,14 +2,14 @@ package com.shop.sklepinternetowy.packageController;
 
 import com.shop.sklepinternetowy.exception.AuctionServiceException;
 import com.shop.sklepinternetowy.request.AuctionCreationRequest;
+import com.shop.sklepinternetowy.response.AuctionResponse;
 import com.shop.sklepinternetowy.service.AuctionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class AuctionController {
@@ -34,5 +34,13 @@ public class AuctionController {
         return "auction-house-page";
 
     }
+    @GetMapping("/browse-auction")
+    public String getFindAuctionPage(Model model) {
+        //czy na pewno encja w kontrolerze? architektura warstw!!
+        List<AuctionResponse> auctions =  auctionService.getAllAuctions();
+        model.addAttribute("planets", auctions);
+        return "browse-auction-form";
+    }
 }
+
 

@@ -2,16 +2,16 @@ package com.shop.sklepinternetowy.service;
 
 import com.shop.sklepinternetowy.entity.User;
 import com.shop.sklepinternetowy.exception.AuthenticationServiceException;
-import com.shop.sklepinternetowy.repository.AuctionRepository;
+import com.shop.sklepinternetowy.repository.UserRepository;
 import com.shop.sklepinternetowy.request.RegisterRequest;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationService {
-    private AuctionRepository auctionRepository;
+    private UserRepository auctionRepository;
 
-    public AuthenticationService(AuctionRepository imperatorRepository) {
+    public AuthenticationService(UserRepository imperatorRepository) {
         this.auctionRepository = imperatorRepository;
     }
 
