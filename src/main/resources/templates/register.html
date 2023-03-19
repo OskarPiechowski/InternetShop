@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rejestracja</title>
+</head>
+<body>
+<h1>Witaj nowy użytkowniku</h1>
+<form action="/create-user" method="post">
+  <label>nazwa użytkownika: </label>
+  <input type="text" th:field="${request.userName}">
+  <br>
+  <label>Podaj hasło</label>
+  <input type="password" th:field="${request.password1}">
+  <br>
+  <label>Jeszcze raz hasło</label>
+  <input type="password" th:field="${request.password2}">
+  <br>
+  <button type="submit">Dokonaj brutalnych handlów!</button>
+</form>
+</body>
+</html>
