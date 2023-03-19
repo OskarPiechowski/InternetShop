@@ -1,5 +1,6 @@
 package com.shop.sklepinternetowy.packageController;
 
+import com.shop.sklepinternetowy.exception.AuthenticationServiceException;
 import com.shop.sklepinternetowy.request.RegisterRequest;
 import com.shop.sklepinternetowy.service.AuthenticationService;
 import org.springframework.stereotype.Controller;
@@ -24,13 +25,18 @@ public class AuthenticationController {
     }
 
     @PostMapping("/create-user")
-    public ModelAndView createImperator(@ModelAttribute("request") RegisterRequest request) {
+    public ModelAndView createUser(@ModelAttribute("request") RegisterRequest request) {
         ModelAndView modelAndView = new ModelAndView("auction-house-page");
         modelAndView.addObject("request", request);
-        service.createImperator(request);
-        modelAndView.addObject("message", "Konto utworzone");
+        try {
+            service.createUser(request);
+            modelAndView.addObject("message", "Konto utworzone");
+        } catch (AuthenticationServiceException e) {
+            modelAndView.addObject("message", e.getMessage());
+        }
         return modelAndView;
     }
 
 }
+
 
