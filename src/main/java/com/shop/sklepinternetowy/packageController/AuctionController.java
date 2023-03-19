@@ -2,6 +2,7 @@ package com.shop.sklepinternetowy.packageController;
 
 import com.shop.sklepinternetowy.exception.AuctionServiceException;
 import com.shop.sklepinternetowy.request.AuctionCreationRequest;
+import com.shop.sklepinternetowy.request.AuctionFilterRequest;
 import com.shop.sklepinternetowy.response.AuctionResponse;
 import com.shop.sklepinternetowy.service.AuctionService;
 import org.springframework.stereotype.Controller;
@@ -34,13 +35,21 @@ public class AuctionController {
         return "auction-house-page";
 
     }
-    @GetMapping("/browse-auction")
+    @GetMapping("/browse-auction-form")
     public String getFindAuctionPage(Model model) {
         //czy na pewno encja w kontrolerze? architektura warstw!!
+        model.addAttribute("request", new AuctionFilterRequest());
         List<AuctionResponse> auctions =  auctionService.getAllAuctions();
-        model.addAttribute("planets", auctions);
+        model.addAttribute("auctions", auctions);
+        return "browse-auction-form";
+    }
+    @PostMapping("/browse-auction-form")
+    public String filteredFindPlanetPage(
+            @ModelAttribute("request") AuctionFilterRequest request) {
+        System.out.println(request);
         return "browse-auction-form";
     }
 }
+
 
 
