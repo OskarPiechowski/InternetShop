@@ -12,17 +12,16 @@
   <label>Wybierz typ aukcji:</label>
   <br>
   <label>Kup Teraz</label>
-  <input type="radio" th:field="${request.planetType}" value="KUP_TERAZ">
+  <input type="radio" th:field="${request.auctionType}" value="KUP_TERAZ">
   <label>Licytacja</label>
-  <input type="radio" th:field="${request.planetType}" value="LICYTACJA">
+  <input type="radio" th:field="${request.auctionType}" value="LICYTACJA">
   <br>
   <button type="submit">Filtruj!</button>
   <br>
 </form>
 
-<div th:each="planet : ${planets}">
-  <div th:text="${planet.name}"></div>
-  <!--    planet.name to tak naprawdę planet.getName()-->
+<div th:each="auction : ${auctions}">
+  <div th:text="${auction.name}"></div>
 </div>
 </body>
 </html>
