@@ -1,4 +1,4 @@
-package com.shop.sklepinternetowy.packageController;
+package com.shop.sklepinternetowy.controller;
 
 import com.shop.sklepinternetowy.exception.AuctionServiceException;
 import com.shop.sklepinternetowy.request.AuctionCreationRequest;
@@ -35,22 +35,22 @@ public class AuctionController {
         return "auction-house-page";
 
     }
-    @GetMapping("/browse-auction-form")
+    @GetMapping("/find-auction")
     public String getFindAuctionPage(Model model) {
         //czy na pewno encja w kontrolerze? architektura warstw!!
         model.addAttribute("request", new AuctionFilterRequest());
         List<AuctionResponse> auctions =  auctionService.getAllAuctions();
         model.addAttribute("auctions", auctions);
-        return "browse-auction-form";
+        return "find-auction";
     }
-    @PostMapping("/browse-auction-form")
+    @PostMapping("/find-auction")
     public String filteredFindAuctionPage(
             @ModelAttribute("request") AuctionFilterRequest request,
             Model model) {
         List<AuctionResponse> auctions = auctionService.getAuctions(request);
         model.addAttribute("auctions", auctions);
         System.out.println(request);
-        return "browse-auction-form";
+        return "find-auction";
     }
 }
 

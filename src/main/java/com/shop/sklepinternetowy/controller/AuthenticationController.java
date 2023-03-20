@@ -1,4 +1,4 @@
-package com.shop.sklepinternetowy.packageController;
+package com.shop.sklepinternetowy.controller;
 
 import com.shop.sklepinternetowy.exception.AuthenticationServiceException;
 import com.shop.sklepinternetowy.request.RegisterRequest;

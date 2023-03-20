@@ -5,28 +5,14 @@ import com.shop.sklepinternetowy.entity.AuctionType;
 import java.util.Objects;
 
 public class AuctionResponse {
-
     private String name;
     private AuctionType type;
-    private int size;
+    private int time;
 
-    public AuctionResponse(String name, AuctionType type, int size) {
+    public AuctionResponse(String name, AuctionType type, int time) {
         this.name = name;
         this.type = type;
-        this.size = size;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AuctionResponse that = (AuctionResponse) o;
-        return size == that.size && Objects.equals(name, that.name) && type == that.type;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, type, size);
+        this.time = time;
     }
 
     public String getName() {
@@ -37,16 +23,30 @@ public class AuctionResponse {
         return type;
     }
 
-    public int getSize() {
-        return size;
+    public int getTime() {
+        return time;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AuctionResponse that = (AuctionResponse) o;
+        return time == that.time && Objects.equals(name, that.name) && type == that.type;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, type, time);
+    }
+
 
     @Override
     public String toString() {
         return "AuctionResponse{" +
                 "name='" + name + '\'' +
                 ", type=" + type +
-                ", size=" + size +
+                ", time=" + time +
                 '}';
     }
 }
